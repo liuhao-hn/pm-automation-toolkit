@@ -32,5 +32,7 @@ jobs:
       - name: 语法编译检查
         run: |
           python -m py_compile "统一日报生成器.py" "统一周报生成器.py" "生成示例报告图片.py"
-      - name: 日报生成器 dry-run 冒烟
-        run: python "统一日报生成器.py" --dry-run
+      - name: 生成示例数据 + dry-run 冒烟
+        run: |
+          python generate_sample_data.py
+          python "统一日报生成器.py" --dry-run --date 2026-6-21

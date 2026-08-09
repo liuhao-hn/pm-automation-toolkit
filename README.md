@@ -88,6 +88,18 @@ AI 数据标注项目管理中存在大量重复性手工工作：
 - 支持新增成员/离职成员自动识别
 - Excel 输出含条件格式，异常一目了然
 
+## 快速体验（示例数据）
+
+仓库内置**脱敏示例数据生成器**（`generate_sample_data.py`），可让日报生成器真正跑起来：
+
+```bash
+pip install -r requirements.txt
+python generate_sample_data.py                                    # 生成示例数据
+python "统一日报生成器.py" --dry-run --date 2026-6-21             # 跑通团队绩效对比
+```
+
+> 示例数据为完全虚构的合成数据（标注员/数字均无真实对应），覆盖「团队绩效」路径，不含任何真实业务数据。
+
 ## 测试
 
 核心业务逻辑（波动分析 + 综合标记引擎）已抽离为 `core_logic.py` 并配有 18 项单测，CI 自动执行：
@@ -95,7 +107,7 @@ AI 数据标注项目管理中存在大量重复性手工工作：
 ```bash
 pip install -r requirements.txt     # 运行依赖
 python -m unittest tests.test_core_logic   # 核心逻辑单测
-python "统一日报生成器.py" --dry-run        # 冒烟：不落盘不发邮件
+python generate_sample_data.py && python "统一日报生成器.py" --dry-run --date 2026-6-21   # 端到端冒烟
 ```
 
 ## 使用方式
