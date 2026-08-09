@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: ruff 检查
+        run: |
+          pip install ruff
+          ruff check .
+
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 语法编译检查
+        run: |
+          python -m py_compile "统一日报生成器.py" "统一周报生成器.py" "生成示例报告图片.py"
+      - name: 日报生成器 dry-run 冒烟
+        run: python "统一日报生成器.py" --dry-run

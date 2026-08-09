@@ -1,5 +1,7 @@
 # PM Automation Toolkit
 
+![CI](https://github.com/liuhao-hn/pm-automation-toolkit/actions/workflows/ci.yml/badge.svg)
+
 数据标注项目管理自动化工具集 — Python 日报/周报自动生成系统。
 
 ## 背景

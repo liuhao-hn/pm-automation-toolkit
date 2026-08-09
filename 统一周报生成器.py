@@ -26,7 +26,7 @@ from datetime import datetime, timedelta
 from 统一日报生成器 import (
     _parse_date_arg, _collect_report_data,
     format_full_report, format_report_image,
-    OUTPUT_DIR, PROJECTS,
+    OUTPUT_DIR,
 )
 
 
@@ -50,7 +50,7 @@ def main():
     run_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     print("═" * 60)
-    print(f"  统一项目周报生成器")
+    print("  统一项目周报生成器")
     print(f"  时间：{run_time}")
     print(f"  窗口：{old_d.replace('_','/')} → {target.replace('_','/')}（7 天）")
     print("═" * 60)

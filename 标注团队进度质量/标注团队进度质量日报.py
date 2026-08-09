@@ -8,7 +8,7 @@
 import os
 import re
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 import pandas as pd
 
 # ==================== 配置 ====================
@@ -155,7 +155,7 @@ def main():
     # -- 文本日报 --
     lines = []
     lines.append("=" * 70)
-    lines.append(f"  标注团队绩效日报")
+    lines.append("  标注团队绩效日报")
     lines.append(f"  最新数据：{new_date_str.replace('_', '/')}    上期数据：{old_date_str.replace('_', '/')}")
     lines.append(f"  生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M')}")
     lines.append("=" * 70)
@@ -213,7 +213,7 @@ def main():
             rate_p_str = f"{rate_p:+.1f}%" if rate_p is not None else "N/A"
             lines.append(f"  │ 🛡️ 质检通过率:    {old_p}% → {new_p}%  ({dir_p}{diff_p}pp, 波动 {rate_p_str})  {flag_p}")
         else:
-            lines.append(f"  │ 🛡️ 质检通过率:    数据缺失")
+            lines.append("  │ 🛡️ 质检通过率:    数据缺失")
 
         # 验收首次通过率
         old_a1 = row["验收首次通过率_old"]
@@ -230,7 +230,7 @@ def main():
             rate_a1_str = f"{rate_a1:+.1f}%" if rate_a1 is not None else "N/A"
             lines.append(f"  │ 🎯 首次验收通过率: {old_a1}% → {new_a1}%  ({dir_a1}{diff_a1}pp, 波动 {rate_a1_str})  {flag_a1}")
         else:
-            lines.append(f"  │ 🎯 首次验收通过率: 数据缺失")
+            lines.append("  │ 🎯 首次验收通过率: 数据缺失")
 
         # 验收累积通过率
         old_a2 = row["验收累积通过率_old"]
@@ -247,9 +247,9 @@ def main():
             rate_a2_str = f"{rate_a2:+.1f}%" if rate_a2 is not None else "N/A"
             lines.append(f"  │ 🎯 累积验收通过率: {old_a2}% → {new_a2}%  ({dir_a2}{diff_a2}pp, 波动 {rate_a2_str})  {flag_a2}")
         else:
-            lines.append(f"  │ 🎯 累积验收通过率: 数据缺失")
+            lines.append("  │ 🎯 累积验收通过率: 数据缺失")
 
-        lines.append(f"  └──────────────────────────────────────────")
+        lines.append("  └──────────────────────────────────────────")
         lines.append("")
 
     lines.append("=" * 70)

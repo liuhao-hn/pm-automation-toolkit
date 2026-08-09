@@ -36,7 +36,6 @@ from email import encoders
 from collections import defaultdict
 
 import math
-import unicodedata
 from zipfile import ZipFile
 from xml.etree import ElementTree as ET
 import pandas as pd
@@ -899,7 +898,7 @@ def format_full_report(all_team, all_dash, all_analysis, run_time: str, report_t
         lines.append(f"  ○ 人员在岗情况及{prefix_t}重点工作")
         lines.append("━" * W)
         lines.append("")
-        lines.append(f"  一、人员在岗情况")
+        lines.append("  一、人员在岗情况")
         lines.append(f"  应出勤 {total_count} 人（账号），{prefix_t}有产出 {active_count} 人，出勤率 {attendance_pct}%。")
         for sup in suppliers:
             sa = supplier_active.get(sup, 0)
@@ -927,7 +926,7 @@ def format_full_report(all_team, all_dash, all_analysis, run_time: str, report_t
             for c in warn_comments[:3]:
                 lines.append(f"     - {c}")
         if low_qual_comments:
-            lines.append(f"  2. 低质量标注员需重点复核，合格率/通过率未达标的条目需逐一排查。")
+            lines.append("  2. 低质量标注员需重点复核，合格率/通过率未达标的条目需逐一排查。")
         if excel_comments:
             lines.append(f"  3. 正向优秀：{len(excel_comments)} 项表现突出，可总结经验推广。")
         if stagnant_comments:
@@ -1052,7 +1051,7 @@ def format_full_report(all_team, all_dash, all_analysis, run_time: str, report_t
             else:
                 lines.append(f"  （共 {len(all_batches)} 个主批次，不含质检拆分/修正子包）")
         else:
-            lines.append(f"  （暂无批次明细数据）")
+            lines.append("  （暂无批次明细数据）")
         lines.append("")
 
         # ── 业务方验收明细 ──
@@ -1143,7 +1142,7 @@ def format_full_report(all_team, all_dash, all_analysis, run_time: str, report_t
                 lines.append("")
 
         if not has_acc_data:
-            lines.append(f"  （暂无验收数据）")
+            lines.append("  （暂无验收数据）")
         lines.append("")
 
         # ── 明日/下周工作安排 ──
@@ -1531,7 +1530,6 @@ def _draw_table(draw, canvas, x, y, col_w, header, rows, header_bg="#3B5998", ro
 def format_report_image(all_team, all_dash, all_analysis, run_time: str, report_type: str = "日报") -> list:
     """生成日报/周报 PNG 图片，返回文件路径列表"""
     from PIL import Image, ImageDraw
-    import PIL.ImageFont
 
     is_weekly = (report_type == "周报")
     rp_label = "周报" if is_weekly else "日报"
@@ -2072,7 +2070,7 @@ def main():
 
     # ── 周报 ──
     if weekly_target:
-        print(f"\n" + "═" * BW)
+        print("\n" + "═" * BW)
         # 重新收集周报数据
         weekly_all_team, weekly_all_dash, weekly_all_analysis = \
             _collect_report_data(weekly_target, weekly_old)

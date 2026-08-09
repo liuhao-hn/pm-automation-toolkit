@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
+# 生成的报告/数据（不提交）
+统一日报_*.txt
+统一日报_*.xlsx
+统一周报_*.txt
+*_周报_*.png
+*_日报_*.png
+供应商绩效分析报告_*.xlsx
