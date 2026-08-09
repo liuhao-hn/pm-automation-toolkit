@@ -3,3 +3,4 @@ XlsxWriter
 openpyxl
 Pillow
 matplotlib
+lxml
