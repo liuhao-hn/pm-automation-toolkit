@@ -25,8 +25,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: 核心逻辑单测（波动/标记引擎，零依赖）
+        run: python -m unittest tests.test_core_logic
       - name: 安装依赖
-        run: pip install pandas XlsxWriter openpyxl Pillow matplotlib
+        run: pip install -r requirements.txt
       - name: 语法编译检查
         run: |
           python -m py_compile "统一日报生成器.py" "统一周报生成器.py" "生成示例报告图片.py"
